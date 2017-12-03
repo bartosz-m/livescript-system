@@ -9,7 +9,8 @@
     "develop": "./node_modules/.bin/nodemon --ext js,ls --watch src --experimental-modules --loader livescript-esm-loader ./dev/watch",
     "build.esm.self": "node --experimental-modules --loader livescript-esm-loader ./dev/build-esm-self.ls",
     "build.cjs.self": "node -r livescript -r livescript-transform-esm/register/cjs ./dev/build-cjs-self",
-    "build": "node -r livescript -r livescript-transform-esm/register/cjs ./dev/build-cjs-self"
+    "build": "node -r livescript -r livescript-transform-esm/register/cjs ./dev/build-cjs-self",
+    "link-local": "npm link livescript-transform-esm livescript-system livescript-compiler  livescript-transform-object-create"
   },
   "author": "Bartosz Matuszewski <bartosz.wojciech.matuszewski@gmail.com>",
   "bugs": {
@@ -21,17 +22,17 @@
     "chokidar": "^1.7.0",
     "fs-extra": "^4.0.2",
     "livescript": "git+https://github.com/gkz/LiveScript.git",
-    "livescript-transform-esm": "^2.8.13",
+    "livescript-transform-esm": "^2.8.20",
     "livescript-transform-implicit-async": "^0.1.7",
-    "livescript-transform-object-create": "0.0.4",
+    "livescript-transform-object-create": "1.0.2",
     "nodemon": "^1.12.1"
   },
   "dependencies": {
-    "livescript-compiler": "0.0.19",
-    "livescript-esm-loader": "0.0.16",
+    "livescript-compiler": "0.0.26",
+    "livescript-esm-loader": "0.0.18",
     "source-map": "^0.6.1"
   },
   "loader": {
-    "livescript-esm-loader": "0.0.16"
+    "livescript-esm-loader": "0.0.18"
   }
 }
