@@ -12,6 +12,10 @@
     "build": "node -r livescript -r livescript-transform-esm/register/cjs ./dev/build-cjs-self"
   },
   "author": "Bartosz Matuszewski <bartosz.wojciech.matuszewski@gmail.com>",
+  "bugs": {
+    "url": "https://gitlab.com/livescript-ide/system/issues"
+  },
+  "homepage": "https://gitlab.com/livescript-ide/system#README",
   "license": "BSD-3-Clause",
   "devDependencies": {
     "chokidar": "^1.7.0",
