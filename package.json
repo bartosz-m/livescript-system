@@ -4,12 +4,12 @@
   "description": "Everything you'll need to work with livescript and modern js",
   "main": "lib/system.js",
   "scripts": {
-    "prepublishOnly": "npm run self-build",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build && npm run test",
+    "test": "npm run build.cjs.self",
     "develop": "./node_modules/.bin/nodemon --ext js,ls --watch src --experimental-modules --loader livescript-esm-loader ./dev/watch",
-    "build": "node --experimental-modules --loader livescript-esm-loader ./dev/build.ls",
-    "build-cjs": "node -r livescript -r livescript-transform-esm/register-cjs ./dev/build-cjs",
-    "self-build": "node --experimental-modules --loader livescript-esm-loader ./test/self-build.ls"
+    "build.esm.self": "node --experimental-modules --loader livescript-esm-loader ./dev/build-esm-self.ls",
+    "build.cjs.self": "node -r livescript -r livescript-transform-esm/register/cjs ./dev/build-cjs-self",
+    "build": "node -r livescript -r livescript-transform-esm/register/cjs ./dev/build-cjs-self"
   },
   "author": "Bartosz Matuszewski <bartosz.wojciech.matuszewski@gmail.com>",
   "license": "BSD-3-Clause",
