@@ -1,6 +1,6 @@
 {
   "name": "livescript-system",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Everything you'll need to work with livescript and modern js",
   "main": "lib/system.js",
   "scripts": {
