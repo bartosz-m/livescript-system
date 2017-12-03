@@ -135,7 +135,10 @@ compiler
             fs-extra.output-file output, js-result.code
             fs-extra.output-file map-file, JSON.stringify js-result.map.to-JSON!
         catch
-            console.error e.stack
+            if e.stack
+                console.error e.stack
+            else
+                console.error e
             # console.log e.stack
         @to-compile--
         @watch = @[_watching]
