@@ -20,15 +20,15 @@
   "license": "BSD-3-Clause",
   "devDependencies": {
     "livescript": "git+https://github.com/gkz/LiveScript.git",
-    "livescript-transform-esm": "^2.8.21",
-    "livescript-transform-implicit-async": "^1.0.0",
-    "livescript-transform-object-create": "1.0.2",
-    "nodemon": "^1.12.1"
+    "livescript-transform-esm": "^2.8.23",
+    "livescript-transform-implicit-async": "^1.0.3",
+    "livescript-transform-object-create": "1.0.4",
+    "nodemon": "^1.12.5"
   },
   "dependencies": {
-    "fs-extra": "^4.0.2",
     "chokidar": "^1.7.0",
-    "livescript-compiler": "0.0.26",
+    "fs-extra": "^4.0.3",
+    "livescript-compiler": "0.0.30",
     "livescript-esm-loader": "0.0.18",
     "source-map": "^0.6.1"
   },

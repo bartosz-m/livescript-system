@@ -132,6 +132,7 @@ compiler
             output = path.join @lib-path, relative-js-path
             relative-map-file = "#relative-js-path.map"
             map-file = path.join @lib-path, relative-map-file
+            console.log output
             fs-extra.output-file output, js-result.code
             fs-extra.output-file map-file, JSON.stringify js-result.map.to-JSON!
         catch
@@ -152,7 +153,8 @@ compiler
         if @clean
         and not (@lib-path in [ '/' '/home' process.cwd! ])
             console.log \cleaning: @lib-path
-            fs-extra.remove @lib-path
+            fs-extra.remove-sync @lib-path
+        @output-path-ready! if @output-path-ready
         console.log \watching "#{@src-path}**/*.ls"
         @watcher = chokidar.watch "#{@src-path}**/*.ls", ignored: /(^|[\/\\])\../
             ..ready = false
