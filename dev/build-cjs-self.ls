@@ -1,7 +1,9 @@
-require! \../src/system
+import
+    \../src/system
+    \../.compiler.config : config
 
 system
     ..watch = false
     ..clean = true
-    ..config = require \../.compiler.config.ls
+    ..config = config
     ..build!

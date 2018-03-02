@@ -132,7 +132,6 @@ compiler
             output = path.join @lib-path, relative-js-path
             relative-map-file = "#relative-js-path.map"
             map-file = path.join @lib-path, relative-map-file
-            console.log output
             fs-extra.output-file output, js-result.code
             fs-extra.output-file map-file, JSON.stringify js-result.map.to-JSON!
         catch
