@@ -4,7 +4,7 @@
   "description": "Everything you'll need to work with livescript and modern js",
   "main": "lib/system.js",
   "scripts": {
-    "prepublishOnly": "npm run build && npm run test",
+    "prepublishOnly": "npm run build",
     "test": "npm run build.cjs.self",
     "develop": "./node_modules/.bin/nodemon --ext js,ls --watch src --experimental-modules --loader livescript-esm-loader ./dev/watch",
     "build.esm.self": "node -r livescript -r livescript-transform-esm/register/cjs ./dev/build-esm-self",
