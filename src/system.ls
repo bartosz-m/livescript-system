@@ -8,7 +8,10 @@ import <[
   livescript
   livescript/lib/lexer
   livescript-compiler/lib/livescript/Compiler
+  js-nodes
 ]>
+
+{ JsNode } = js-nodes
 
 livescript.lexer = lexer
 
@@ -62,10 +65,13 @@ compiler
     ..compilers = {}
     ..get-compiler = (config-path) ->>
           # console.log \comiler config-path
-          unless config-path
+          config = unless config-path
+              then @config
+              else await async import config-path
+          unless true #config-path
               ls-compiler
           else
-              config = await async import config-path
+              # config = await async import config-path
               @compilers[config-path] = ls-compiler.copy!
                   ..configure = (config = {}) !-> @install-plugins config.plugins
                   ..install-plugin = (plugin) !->
@@ -84,7 +90,10 @@ compiler
                           for name, plugin-entry of plugins
                               plugin-entry.plugin?install @, plugin-entry.config
                               @install-plugin plugin-entry.plugin
-                  
+                  ..add-source-map-url.prepend JsNode.new ({ast,options}: args) ->
+                      if ast.is-module
+                          options.output-filename = options.output-filename.replace /\.js$/ '.mjs'
+                      args
                   ..configure config
               
     ..default-options =
@@ -143,7 +152,9 @@ compiler
         @to-compile--
         @watch = @[_watching]
         
-    ..build = !->
+    ..build = ->
+        @task = {}
+            ..promise = new Promise (..resolve,..reject) !->
         @runtime-compiler = Compiler.create {livescript}
         @runtime-compiler.install!
         @install-plugins @config.plugins
@@ -168,11 +179,16 @@ compiler
                 map-file = js-file + \.map
                 fs-extra.remove js-file
                 fs-extra.remove map-file
+            ..on \error (e) ~> @task.reject e
+        @task.promise
+                
     
     define-property .., \watch,
         get: -> @[_watching]
         set: ->
             @[_watching] = it
+            unless @[_watching]
+                @task?resolve!
             if @watcher?ready and @to-compile == 0 and not @[_watching]
                 @watcher.close!
 

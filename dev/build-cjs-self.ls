@@ -1,6 +1,6 @@
 import
     \../src/system
-    \../.compiler.config : config
+    \../.cjs.config : config
 
 system
     ..watch = false

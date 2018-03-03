@@ -1,6 +1,9 @@
-import \../src/system
+import
+    \../src/system
+    \../.esm.config : config
 
 system
     ..watch = false
-    ..config = import \../.compiler.config.ls
+    ..clean = false
+    ..config = config
     ..build!
