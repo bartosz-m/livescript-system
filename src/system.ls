@@ -127,7 +127,7 @@ compiler
                 output-filename: relative-path.replace /.ls$/ '.js'
             console.log "compiling #relative-path"
             js-result = compiler.compile ls-code, options <<< @default-options
-            ext = if js-result.is-module then '.mjs' else '.js'
+            ext = if js-result.ast.is-module then '.mjs' else '.js'
             relative-js-path = relative-path.replace '.ls', ext
             output = path.join @lib-path, relative-js-path
             relative-map-file = "#relative-js-path.map"
